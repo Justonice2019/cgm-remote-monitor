@@ -3,7 +3,13 @@ const { MongoClient } = require('mongodb');
 // 连接 URL
 const url = 'mongodb://justonice:ylq787817899..@121.41.11.76:27800';
 const client = new MongoClient(url);
-
+const qs = require('qs')
+console.log(qs.stringify({$expr: {
+        $or: [
+            { $eq: [{ $toString: '$carbs' }, '3'] },  // 将数字转换为字符串比较
+            { $eq: [{ $toInt: '$carbs' }, 2] }        // 将字符串转换为数字比较
+        ]
+    }}))
 async function main() {
     try {
         // 连接到服务器
@@ -16,21 +22,39 @@ async function main() {
         // 插入一个文档
         // const insertResult = await collection.insertOne({ item: 'test', quantity: 1 });
         // console.log('Inserted document:', JSON.stringify(insertResult.ops[0], null, 2));
-
+/*
+{
+  "$or": [
+    {
+      "$eq": [
+        {
+          "$toString": "$carbs"
+        },
+        "3"
+      ]
+    },
+    {
+      "$eq": [
+        {
+          "$toString": "$carbs"
+        },
+        "2"
+      ]
+    }
+  ]
+}
+* */
+        const query = {
+            notes_mealsTime: {
+                $nq: null
+            },
+        }
+        console.log(qs.stringify(query))
         // 查询文档
-        const findResult = await collection.find({
-            "$or": [
-                {
-                    "carbs": 2
-                },
-                {
-                    "carbs": 3
-                },
-            ],
-            // carbs: {
-            //   $in: [2, 3]
-            // }
-        }).sort({ created_at: -1 }).skip(0).limit(5).toArray();
+        const findResult = await collection.find().sort({ created_at: -1 }).skip(0).limit(5).toArray();
+
+
+
         console.log('Found documents:', JSON.stringify(findResult, null, 2));
         //
         // // 更新文档
