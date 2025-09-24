@@ -4,12 +4,6 @@ const { MongoClient } = require('mongodb');
 const url = 'mongodb://justonice:ylq787817899..@121.41.11.76:27800';
 const client = new MongoClient(url);
 const qs = require('qs')
-console.log(qs.stringify({$expr: {
-        $or: [
-            { $eq: [{ $toString: '$carbs' }, '3'] },  // 将数字转换为字符串比较
-            { $eq: [{ $toInt: '$carbs' }, 2] }        // 将字符串转换为数字比较
-        ]
-    }}))
 async function main() {
     try {
         // 连接到服务器
@@ -45,13 +39,15 @@ async function main() {
 }
 * */
         const query = {
-            notes_mealsTime: {
-                $nq: null
-            },
+            "$or": [
+                {
+                    "eventType": "Bolus Wizard"
+                }
+            ],
         }
         console.log(qs.stringify(query))
         // 查询文档
-        const findResult = await collection.find().sort({ created_at: -1 }).skip(0).limit(5).toArray();
+        const findResult = await collection.find(query).sort({ created_at: -1 }).skip(0).limit(5).toArray();
 
 
 
