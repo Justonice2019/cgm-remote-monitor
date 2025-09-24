@@ -31,4 +31,4 @@ If applicable, add screenshots to help explain your problem.
 - Is your issue specific to a browser (Firefox/Safari/Chrome?) or a device (Android phone, etc.)?
 
 **Additional context**
-Add any other context about the problem here.
+AddPanel any other context about the problem here.

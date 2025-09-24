@@ -35,7 +35,7 @@ To add Alexa support for a plugin, [check this out](#adding-alexa-support-to-a-p
 ## Activate the Nightscout Alexa Plugin 
 
 1. Your Nightscout site needs to be new enough that it supports the `alexa` plugin. It needs to be [version 0.9.1 (Grilled Cheese)](https://github.com/nightscout/cgm-remote-monitor/releases/tag/0.9.1) or later. See [updating my version](https://github.com/nightscout/cgm-remote-monitor#updating-my-version) if you need a newer version.
-1. Add `alexa` to the list of plugins in your `ENABLE` setting. ([Environment variables](https://github.com/nightscout/cgm-remote-monitor#environment) are set in the configuration section for your monitor. Typically Azure, Heroku, etc.)
+1. AddPanel `alexa` to the list of plugins in your `ENABLE` setting. ([Environment variables](https://github.com/nightscout/cgm-remote-monitor#environment) are set in the configuration section for your monitor. Typically Azure, Heroku, etc.)
 1. The Alexa plugin pulls its units preferences from your site's defaults. If you don't have a `DISPLAY_UNITS` entry, it will default to `mg/dl`. If you want it to use mmol/L, make sure you have a `DISPLAY_UNITS` line, and set it to `mmol` (*not* `mmol/l`).
 
 ## Create Your Alexa Skill
@@ -133,17 +133,17 @@ If you add support for another language, please consider [making a pull request]
     - Get to your list of Alexa Skills at https://developer.amazon.com/alexa/console/ask and click on the name of the skill.
 1. Click on the language drop-down box in the upper right corner of the window.
 1. Click "Language settings".
-1. Add your desired language.
+1. AddPanel your desired language.
 1. Click the "Save" button.
 1. Navigate to "CUSTOM" in the left navigation pane.
 1. Select your new language in the language drop-down box.
 1. Go to "JSON Editor" (just above "Interfaces" in the left navigation pane).
 1. Remove the existing contents in the text box, and copy and paste the configuration code from a familiar language in [the list of templates](alexa-templates/).
 1. Click "Save Model".
-1. Click the "Add" button next to the "Slot Types" section in the left pane.
+1. Click the "AddPanel" button next to the "Slot Types" section in the left pane.
 1. Click the radio button for "Use an existing slot type from Alexa's built-in library"
 1. In the search box just below that option, search for "first name"
-1. If your language has an option, click the "Add Slot Type" button for that option.
+1. If your language has an option, click the "AddPanel Slot Type" button for that option.
     - If your language doesn't have an option, you won't be able to ask Nightscout a question that includes a name.
 1. For each Intent listed in the left navigation pane (e.g. "NSStatus" and "MetricNow"):
     1. Click on the Intent name.

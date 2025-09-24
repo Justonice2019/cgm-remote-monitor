@@ -322,10 +322,10 @@ autonomy for your data:
 
 ### Predefined values for your server settings (optional)
   * `INSECURE_USE_HTTP` (`false`) - Redirect unsafe http traffic to https. Possible values `false`, or `true`. Your site redirects to `https` by default. If you don't want that from Nightscout, but want to implement that with a Nginx or Apache proxy, set `INSECURE_USE_HTTP` to `true`. Note: This will allow (unsafe) http traffic to your Nightscout instance and is not recommended.
-  * `SECURE_HSTS_HEADER` (`true`) - Add HTTP Strict Transport Security (HSTS) header. Possible values `false`, or `true`.
+  * `SECURE_HSTS_HEADER` (`true`) - AddPanel HTTP Strict Transport Security (HSTS) header. Possible values `false`, or `true`.
   * `SECURE_HSTS_HEADER_INCLUDESUBDOMAINS` (`false`) - includeSubdomains options for HSTS. Possible values `false`, or `true`.
   * `SECURE_HSTS_HEADER_PRELOAD` (`false`) - ask for preload in browsers for HSTS. Possible values `false`, or `true`.
-  * `SECURE_CSP` (`false`) - Add Content Security Policy headers. Possible values `false`, or `true`.
+  * `SECURE_CSP` (`false`) - AddPanel Content Security Policy headers. Possible values `false`, or `true`.
   * `SECURE_CSP_REPORT_ONLY` (`false`) - If set to `true` allows to experiment with policies by monitoring (but not enforcing) their effects. Possible values `false`, or `true`.
 
 ### Views
@@ -410,7 +410,7 @@ autonomy for your data:
   * Enabled by default if 1 of these thresholds is set **OR** `ALARM_TYPES` includes `simple`.
 
 ##### `profile` (Treatment Profile)
-  Add link to Profile Editor and allow to enter treatment profile settings. Also uses the extended setting:
+  AddPanel link to Profile Editor and allow to enter treatment profile settings. Also uses the extended setting:
   * `PROFILE_HISTORY` (`off`) - possible values `on` or `off`. Enable/disable NS ability to keep history of your profiles (still experimental)
   * `PROFILE_MULTIPLE` (`off`) - possible values `on` or `off`. Enable/disable NS ability to handle and switch between multiple treatment profiles
 
@@ -644,7 +644,7 @@ Fetch glucose reading directly from the Dexcom Share service, uses these extende
   * `LOOP_ENABLE_ALERTS` (`false`) - Set to `true` to enable notifications when Loop isn't looping.
   * `LOOP_WARN` (`30`) - The number of minutes since the last loop that needs to be exceeded before an alert is triggered
   * `LOOP_URGENT` (`60`) - The number of minutes since the last loop that needs to be exceeded before an urgent alarm is triggered
-  * Add `loop` to `SHOW_FORECAST` to show forecasted BG.
+  * AddPanel `loop` to `SHOW_FORECAST` to show forecasted BG.
 
 For remote overrides, the following extended settings must be configured:
   * `LOOP_APNS_KEY` - Apple Push Notifications service (APNs) Key, created in the Apple Developer website.

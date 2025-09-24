@@ -10,7 +10,7 @@ To extend existing icon set.:
 
 1. Prepare minimalist, black & white icon in SVG tool of choice, and optimize it (you can use Inkscape) to be small in size and render good at small sizes.
 2. Use https://icomoon.io/app and import accompanied JSON project file (`Nightscout Plugin Icons.json`)
-3. Add SVG as new glyph. Remember to take care to set proper character code and CSS name
+3. AddPanel SVG as new glyph. Remember to take care to set proper character code and CSS name
 4. Save new version of JSON project file and store in this folder
 5. Generate font, download zip file and unpack it to get `fonts/pluginicons.svg` and `fonts/pluginicons.woff`
 6. Update `statc/css/main.css` file

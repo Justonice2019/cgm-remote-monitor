@@ -31,7 +31,7 @@ To add Google Home support for your Nightscout site, here's what you need to do:
 ## Activate the Nightscout Google Home Plugin
 
 1. Your Nightscout site needs to be new enough that it supports the `googlehome` plugin. It needs to be [version 13.0.0 (Ketchup)](https://github.com/nightscout/cgm-remote-monitor/releases/tag/13.0.0) or later. See [updating my version](https://github.com/nightscout/cgm-remote-monitor#updating-my-version) if you need a newer version.
-1. Add `googlehome` to the list of plugins in your `ENABLE` setting. ([Environment variables](https://github.com/nightscout/cgm-remote-monitor#environment) are set in the configuration section for your monitor. Typically Azure, Heroku, etc.)
+1. AddPanel `googlehome` to the list of plugins in your `ENABLE` setting. ([Environment variables](https://github.com/nightscout/cgm-remote-monitor#environment) are set in the configuration section for your monitor. Typically Azure, Heroku, etc.)
 
 ## Create Your DialogFlow Agent
 
@@ -51,7 +51,7 @@ To add Google Home support for your Nightscout site, here's what you need to do:
 1. Set the display name (e.g. "Night Scout") of your Action and set your Google Assistant voice.
     - Unfortunately, the Action name needs to be two words, and is required to be unique across all of Google, even though you won't be publishing this for everyone on Google to use. So you'll have to be creative with the name since "Night Scout" is already taken.
 1. Click "Save" in the upper right corner.
-1. Navigate to "Actions" in the left nagivation pane, then click on the "Add your first action" button.
+1. Navigate to "Actions" in the left nagivation pane, then click on the "AddPanel your first action" button.
 1. Make sure you're on "Cutom intent" and then click "Build" to open DialogFlow in a new tab.
 1. Sign in with the same Google account you used to sign in to the Actions Console.
     - You'll have to go through the account setup steps if this is your first time using DialogFlow.
@@ -129,7 +129,7 @@ If you add support for another language, please consider [making a pull request]
 1. Open your DialogFlow agent.
     - Get to your list of agents at https://console.dialogflow.com/api-client/#/agents and click on the name of your Nightscout agent.
 1. Click on the "Languages" tab.
-1. Click the "Add Additional Language" drop-down box.
+1. Click the "AddPanel Additional Language" drop-down box.
 1. Select your desired language.
 1. Click the "SAVE" button.
     - Note the new language code below the agent's name. e.g. if you're using the English template and you added Spanish, you would see two buttons: "en" and "es".
@@ -139,7 +139,7 @@ If you add support for another language, please consider [making a pull request]
     1. Note the phrases used in the "Training phrases" section.
         - If the phrase has a colored block (e.g. `metric` or `pwd`), click the phrase (but NOT the colored block) and note the "PARAMETER NAME" of the item with the same-colored "ENTITY".
     1. Click on the new language code (beneath the agent name near the top of the navigation pane).
-    1. Add equivalent or similar training phrases as those you noted a couple steps ago.
+    1. AddPanel equivalent or similar training phrases as those you noted a couple steps ago.
         - If the phrase in the orginal language has a colored block with a word in it, that needs to be included. When adding the phrase to the new language, follow these steps to add the colored block:
             1. When typing that part of the training phrase, don't translate the word in the block; just keep it as-is.
             1. After typing the phrase (DON'T push the Enter key yet!) highlight/select the word.
@@ -150,7 +150,7 @@ If you add support for another language, please consider [making a pull request]
     1. Scroll down to the "Action and parameters" section.
     1. If any of the items in that list have the "REQUIRED" option checked:
         1. Click the "Define prompts..." link on the right side of that item.
-        1. Add phrases that Google will ask if you happen to say something similar to a training phrase, but don't include this parameter (e.g. if you ask about a metric but don't say what metric you want to know about).
+        1. AddPanel phrases that Google will ask if you happen to say something similar to a training phrase, but don't include this parameter (e.g. if you ask about a metric but don't say what metric you want to know about).
         1. Click "CLOSE".
     1. Scroll down to the "Responses" section.
     1. Set just one phrase here. This will be what Google says if it has technical difficulties getting a response from your Nightscout website.

@@ -89,7 +89,7 @@ Search for the action you'd like this event to trigger. In this example, we'll c
 Choose the "Send a notification from the IFTTT app" action type for a basic push alert. You can experiment with the "rich" notifications later.
 
 ### 5. Complete Action Fields
-Enter the message that will display in this push notification. In this example, it was triggered on an `ns-urgent-low`, so we'll write something like "Urgent Low!". We can also display the current BG by including the `Value2` ingredient (via the "Add ingredient" button).
+Enter the message that will display in this push notification. In this example, it was triggered on an `ns-urgent-low`, so we'll write something like "Urgent Low!". We can also display the current BG by including the `Value2` ingredient (via the "AddPanel ingredient" button).
 
 Click the "Create action" button when you're done.
 
