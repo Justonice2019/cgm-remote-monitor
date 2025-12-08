@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Socket.IO 客户端示例</title>
+  <style>
+
+  </style>
+</head>
+<body>
+<div class="container">
+
+
+</div>
+
+<script src="socket.io/socket.io.js"></script>
+
+<script>
+    const client = {}
+    client.socket = socket = io.connect({ transports: ["polling"] });
+    client.alarmSocket = alarmSocket = io.connect("/alarm", { multiplex: true, transports: ["polling"] });
+
+    socket.on('dataUpdate', (received, headless) => {
+        console.log(received, headless)
+    });
+
+    socket.on('connect', function() {
+        console.log('Client connected to server.');
+        var auth_data = {
+            client: 'web',
+            secret: null,
+            // , secret: client.authorized && client.authorized.token ? null : client.hashauth.hash()
+            // , token: client.authorized && client.authorized.token,
+            history: 48
+        };
+
+        socket.emit(
+            'authorize'
+            , auth_data
+            , function authCallback (data) {
+                console.log(data)
+            }
+        );
+    });
+
+
+    /////////////////////////////////
+
+    alarmSocket.on('connect', function() {
+        console.log('alarmSocket connect')
+        var auth_data = {
+            secret: null
+            // secret: client.authorized && client.authorized.token ? null : client.hashauth.hash(),
+            // jwtToken: client.authorized && client.authorized.token
+        };
+
+        alarmSocket.emit(
+            'subscribe',
+            auth_data,
+            function subscribeCallback (data) {
+                console.log(data)
+            }
+        );
+
+    });
+    alarmSocket.on('notification', function(notify) {
+        console.log(notify)
+    });
+
+    alarmSocket.on('announcement', function(notify) {
+        console.log(notify)
+    });
+
+    alarmSocket.on('alarm', function(notify) {
+        console.log(notify)
+    });
+
+    alarmSocket.on('urgent_alarm', function(notify) {
+        console.log(notify)
+    });
+
+    alarmSocket.on('clear_alarm', function(notify) {
+        console.log(notify)
+    });
+    console.log(client)
+
+</script>
+</body>
+</html>
+<!--<!doctype html>-->
+<!--<html lang="zh-CN">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta name="viewport"-->
+<!--        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--  <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--  <title>Socket.IO 客户端示例</title>-->
+<!--  <style>-->
+
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--  <div class="container">-->
+
+
+<!--  </div>-->
+
+<!--  &lt;!&ndash; 引入Socket.IO客户端库 &ndash;&gt;-->
+<!--  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>-->
+
+<!--  <script>-->
+<!--    let socket = null;-->
+<!--    let alarmSocket = null;-->
+
+<!--    // 连接服务器-->
+<!--    function connect() {-->
+<!--      // 创建主Socket.IO客户端实例-->
+<!--      socket = io('', {-->
+<!--        transports: ['polling'] // 传输方式-->
+<!--      });-->
+
+<!--      // 连接成功事件-->
+<!--      socket.on('connect', () => {-->
+<!--          console.log('成功连接到服务器')-->
+<!--      });-->
+
+<!--      // 断开连接事件-->
+<!--      socket.on('disconnect', (reason) => {-->
+<!--          console.log('与服务器断开连接')-->
+<!--      });-->
+
+<!--      // 连接错误事件-->
+<!--      socket.on('connect_error', (error) => {-->
+<!--        console.log(`连接错误: ${error.message}`);-->
+<!--      });-->
+
+<!--      // 创建告警Socket.IO客户端实例-->
+<!--      alarmSocket = io('/alarm', {-->
+<!--        transports: ['polling'] // 传输方式-->
+<!--      });-->
+
+<!--      // 告警Socket连接成功事件-->
+<!--      alarmSocket.on('connect', () => {-->
+<!--          console.log('成功连接到告警服务器');-->
+<!--          // 发送订阅请求-->
+<!--          alarmSocket.emit('subscribe', {}, function(data) {-->
+<!--            console.log('告警订阅结果:', data);-->
+<!--          });-->
+<!--      });-->
+
+<!--      // 告警Socket断开连接事件-->
+<!--      alarmSocket.on('disconnect', (reason) => {-->
+<!--          console.log('与告警服务器断开连接:', reason);-->
+<!--      });-->
+
+<!--      // 告警Socket连接错误事件-->
+<!--      alarmSocket.on('connect_error', (error) => {-->
+<!--        console.log(`告警连接错误: ${error.message}`);-->
+<!--      });-->
+
+<!--      socket.on('notification', (data) => {-->
+<!--          console.log('notification', data);-->
+<!--      });-->
+<!--    }-->
+
+<!--    // 断开连接-->
+<!--    function disconnect() {-->
+<!--      if (socket) {-->
+<!--        socket.disconnect();-->
+<!--        socket = null;-->
+<!--        console.log('已手动断开主连接');-->
+<!--      }-->
+<!--      if (alarmSocket) {-->
+<!--        alarmSocket.disconnect();-->
+<!--        alarmSocket = null;-->
+<!--        console.log('已手动断开告警连接');-->
+<!--      }-->
+<!--    }-->
+
+<!--    // 页面加载时自动连接-->
+<!--    window.onload = function() {-->
+<!--      connect();-->
+<!--    };-->
+
+<!--  </script>-->
+<!--</body>-->
+<!--</html>-->
