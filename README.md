@@ -1,3 +1,8 @@
+# socket 事件类别
+````
+
+````
+
 Nightscout Web Monitor (a.k.a. cgm-remote-monitor)
 ==================================================
 
